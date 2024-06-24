@@ -5,12 +5,12 @@ import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBQsJ5MS4-MacHnO5wxQX8V2tGe0y6eCXo",
-  authDomain: "myecommerce2-7b8fc.firebaseapp.com",
-  projectId: "myecommerce2-7b8fc",
-  storageBucket: "myecommerce2-7b8fc.appspot.com",
-  messagingSenderId: "715233167432",
-  appId: "1:715233167432:web:3a0acec83b123399d3307d"
+    apiKey: "AIzaSyDdXJKF1KiwF_j-eSXxrGYn8RYs0bGUmvk",
+    authDomain: "e-bharat-d80dd.firebaseapp.com",
+    projectId: "e-bharat-d80dd",
+    storageBucket: "e-bharat-d80dd.appspot.com",
+    messagingSenderId: "153723970351",
+    appId: "1:153723970351:web:484ea6216de397095f37da"
 };
 
 // Initialize Firebase

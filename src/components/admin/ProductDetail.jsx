@@ -9,88 +9,68 @@ import toast from "react-hot-toast";
 const ProductDetail = () => {
     const context = useContext(myContext);
     const { loading, setLoading, getAllProduct, getAllProductFunction } = context;
-    // console.log(getAllProduct)
 
-    // navigate 
     const navigate = useNavigate();
 
-    // Delete product 
     const deleteProduct = async (id) => {
-        setLoading(true)
+        setLoading(true);
         try {
-            await deleteDoc(doc(fireDB, 'products', id))
-            toast.success('Product Deleted successfully')
+            await deleteDoc(doc(fireDB, 'products', id));
+            toast.success('Product Deleted successfully');
             getAllProductFunction();
-            setLoading(false)
+            setLoading(false);
         } catch (error) {
-            console.log(error)
-            setLoading(false)
+            console.log(error);
+            setLoading(false);
         }
-    }
+    };
+
     return (
-        <div>
+        <div className="bg-white p-5 rounded-lg shadow-md">
             <div className="py-5 flex justify-between items-center">
-                {/* text  */}
-                <h1 className=" text-xl text-pink-300 font-bold">All Product</h1>
-                {/* Add Product Button  */}
+                <h1 className="text-2xl text-pink-500 font-bold">All Products</h1>
                 <Link to={'/addproduct'}>
-                    <button className="px-5 py-2 bg-pink-50 border border-pink-100 rounded-lg">Add Product</button>
+                    <button className="px-5 py-2 bg-pink-500 text-white font-semibold rounded-lg shadow hover:bg-pink-600 transition duration-300">Add Product</button>
                 </Link>
             </div>
 
-            {/* Loading  */}
             <div className="flex justify-center relative top-20">
                 {loading && <Loader />}
             </div>
 
-            {/* table  */}
             <div className="w-full overflow-x-auto mb-5">
-
-                <table className="w-full text-left border border-collapse sm:border-separate border-pink-100 text-pink-400" >
-
-                    <tbody>
-                        <tr>
-                            <th scope="col" className="h-12 px-6 text-md border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100 font-bold fontPara">S.No.</th>
-                            <th scope="col" className="h-12 px-6 text-md border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100 font-bold fontPara">Image</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100">Title</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100">Price</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100">Category</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100"> Date</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100">Action</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100">Action</th>
+                <table className="w-full text-left border-collapse bg-white shadow-lg rounded-lg">
+                    <thead>
+                        <tr className="bg-pink-50 text-pink-600">
+                            <th className="p-4 text-md font-semibold border border-pink-100">S.No.</th>
+                            <th className="p-4 text-md font-semibold border border-pink-100">Image</th>
+                            <th className="p-4 text-md font-semibold border border-pink-100">Title</th>
+                            <th className="p-4 text-md font-semibold border border-pink-100">Price</th>
+                            <th className="p-4 text-md font-semibold border border-pink-100">Category</th>
+                            <th className="p-4 text-md font-semibold border border-pink-100">Date</th>
+                            <th className="p-4 text-md font-semibold border border-pink-100">Edit</th>
+                            <th className="p-4 text-md font-semibold border border-pink-100">Delete</th>
                         </tr>
+                    </thead>
+                    <tbody>
                         {getAllProduct.map((item, index) => {
-                            const { id, title, price, category, date, productImageUrl } = item
+                            const { id, title, price, category, date, productImageUrl } = item;
                             return (
-                                <tr key={index} className="text-pink-300">
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 ">
-                                        {index + 1}.
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
+                                <tr key={index} className="text-gray-700 hover:bg-pink-50 transition duration-300">
+                                    <td className="p-4 border border-pink-100">{index + 1}</td>
+                                    <td className="p-4 border border-pink-100">
                                         <div className="flex justify-center">
-                                            <img className="w-20 " src={productImageUrl} alt="" />
+                                            <img className="w-20 h-20 object-cover rounded-lg" src={productImageUrl} alt={title} />
                                         </div>
                                     </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        {title}
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        ₹{price}
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        {category}
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        {date}
-                                    </td>
-                                    <td onClick={()=> navigate(`/updateproduct/${id}`)} className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 text-green-500 cursor-pointer ">
-                                        Edit
-                                    </td>
-                                    <td onClick={()=> deleteProduct(id)} className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 text-red-500 cursor-pointer ">
-                                        Delete
-                                    </td>
+                                    <td className="p-4 border border-pink-100">{title}</td>
+                                    <td className="p-4 border border-pink-100">₹{price}</td>
+                                    <td className="p-4 border border-pink-100">{category}</td>
+                                    <td className="p-4 border border-pink-100">{date}</td>
+                                    <td onClick={() => navigate(`/updateproduct/${id}`)} className="p-4 border border-pink-100 text-green-500 cursor-pointer hover:text-green-600 transition duration-300">Edit</td>
+                                    <td onClick={() => deleteProduct(id)} className="p-4 border border-pink-100 text-red-500 cursor-pointer hover:text-red-600 transition duration-300">Delete</td>
                                 </tr>
-                            )
+                            );
                         })}
                     </tbody>
                 </table>

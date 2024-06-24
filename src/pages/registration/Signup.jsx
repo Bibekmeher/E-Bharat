@@ -77,20 +77,20 @@ const Signup = () => {
 
     }
     return (
-        <div className='flex justify-center items-center h-screen'>
+        <div className='flex justify-center items-center h-screen bg-gradient-to-r from-pink-100 to-pink-200'>
             {loading && <Loader/>}
-            {/* Login Form  */}
-            <div className="login_Form bg-pink-50 px-8 py-6 border border-pink-100 rounded-xl shadow-md">
+            {/* Signup Form  */}
+            <div className="bg-white px-8 py-6 border border-pink-200 rounded-xl shadow-lg transition-transform transform hover:scale-105 w-full max-w-md">
 
                 {/* Top Heading  */}
                 <div className="mb-5">
-                    <h2 className='text-center text-2xl font-bold text-pink-500 '>
+                    <h2 className='text-center text-2xl font-extrabold text-pink-600'>
                         Signup
                     </h2>
                 </div>
 
                 {/* Input One  */}
-                <div className="mb-3">
+                <div className="mb-4">
                     <input
                         type="text"
                         placeholder='Full Name'
@@ -101,12 +101,12 @@ const Signup = () => {
                                 name: e.target.value
                             })
                         }}
-                        className='bg-pink-50 border border-pink-200 px-2 py-2 w-96 rounded-md outline-none placeholder-pink-200'
+                        className='bg-pink-50 border border-pink-300 px-4 py-2 w-full rounded-md outline-none placeholder-pink-300 focus:ring-2 focus:ring-pink-500'
                     />
                 </div>
 
                 {/* Input Two  */}
-                <div className="mb-3">
+                <div className="mb-4">
                     <input
                         type="email"
                         placeholder='Email Address'
@@ -117,7 +117,7 @@ const Signup = () => {
                                 email: e.target.value
                             })
                         }}
-                        className='bg-pink-50 border border-pink-200 px-2 py-2 w-96 rounded-md outline-none placeholder-pink-200'
+                        className='bg-pink-50 border border-pink-300 px-4 py-2 w-full rounded-md outline-none placeholder-pink-300 focus:ring-2 focus:ring-pink-500'
                     />
                 </div>
 
@@ -133,7 +133,7 @@ const Signup = () => {
                                 password: e.target.value
                             })
                         }}
-                        className='bg-pink-50 border border-pink-200 px-2 py-2 w-96 rounded-md outline-none placeholder-pink-200'
+                        className='bg-pink-50 border border-pink-300 px-4 py-2 w-full rounded-md outline-none placeholder-pink-300 focus:ring-2 focus:ring-pink-500'
                     />
                 </div>
 
@@ -142,14 +142,14 @@ const Signup = () => {
                     <button
                         type='button'
                         onClick={userSignupFunction}
-                        className='bg-pink-500 hover:bg-pink-600 w-full text-white text-center py-2 font-bold rounded-md '
+                        className='bg-pink-500 hover:bg-pink-600 w-full text-white text-center py-2 font-bold rounded-md shadow-md transition-transform transform hover:scale-105'
                     >
                         Signup
                     </button>
                 </div>
 
-                <div>
-                    <h2 className='text-black'>Have an account <Link className=' text-pink-500 font-bold' to={'/login'}>Login</Link></h2>
+                <div className='text-center'>
+                    <h2 className='text-gray-700'>Have an account <Link className=' text-pink-500 font-bold hover:underline' to={'/login'}>Login</Link></h2>
                 </div>
 
             </div>

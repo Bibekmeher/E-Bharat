@@ -1,56 +1,57 @@
-
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ProductDetail from '../../components/admin/ProductDetail';
 import OrderDetail from '../../components/admin/OrderDetail';
 import UserDetail from '../../components/admin/UserDetail';
 import { useContext } from 'react';
 import myContext from '../../context/myContext';
+import 'react-tabs/style/react-tabs.css';
 
 const AdminDashboard = () => {
     const user = JSON.parse(localStorage.getItem('users'));
     const context = useContext(myContext);
     const {getAllProduct, getAllOrder, getAllUser} = context;
+
     return (
-        <div>
+        <div className="min-h-screen bg-gray-100">
             {/* Top */}
             <div className="top mb-5 px-5 mt-5">
-                <div className=" bg-pink-50 py-5 border border-pink-100 rounded-lg">
-                    <h1 className=" text-center text-2xl font-bold text-pink-500">Admin Dashboard</h1>
+                <div className="bg-gradient-to-r from-pink-400 to-pink-600 py-5 border border-pink-100 rounded-lg shadow-lg">
+                    <h1 className="text-center text-3xl font-bold text-white">Admin Dashboard</h1>
                 </div>
             </div>
 
             <div className="px-5">
-                {/* Mid  */}
+                {/* Mid */}
                 <div className="mid mb-5">
-                    {/* main  */}
-                    <div className=" bg-pink-50 py-5 rounded-xl border border-pink-100">
-                        {/* image  */}
+                    {/* Main */}
+                    <div className="bg-white py-5 rounded-xl border border-pink-100 shadow-md">
+                        {/* Image */}
                         <div className="flex justify-center">
-                            <img src="https://cdn-icons-png.flaticon.com/128/2202/2202112.png" alt="" />
+                            <img className="w-24 h-24 rounded-full border-4 border-pink-500 shadow-lg" src="https://cdn-icons-png.flaticon.com/128/2202/2202112.png" alt="Admin Avatar" />
                         </div>
-                        {/* text  */}
-                           <div className="">
-                            {/* Name  */}
-                            <h1 className=" text-center text-lg">
-                                <span className=" font-bold">Name : </span>
+                        {/* Text */}
+                        <div className="text-center mt-4">
+                            {/* Name */}
+                            <h1 className="text-xl font-bold text-gray-700">
+                                <span className="font-semibold text-pink-500">Name: </span>
                                 {user?.name}
                             </h1>
 
-                            {/* Email  */}
-                            <h1 className=" text-center text-lg">
-                                <span className=" font-bold">Email : </span>
+                            {/* Email */}
+                            <h1 className="text-xl font-bold text-gray-700">
+                                <span className="font-semibold text-pink-500">Email: </span>
                                 {user?.email}
                             </h1>
 
-                            {/* Date  */}
-                            <h1 className=" text-center text-lg">
-                                <span className=" font-bold">Date : </span>
+                            {/* Date */}
+                            <h1 className="text-xl font-bold text-gray-700">
+                                <span className="font-semibold text-pink-500">Date: </span>
                                 {user?.date}
                             </h1>
 
-                            {/* Role  */}
-                            <h1 className=" text-center text-lg">
-                                <span className=" font-bold">Role : </span>
+                            {/* Role */}
+                            <h1 className="text-xl font-bold text-gray-700">
+                                <span className="font-semibold text-pink-500">Role: </span>
                                 {user?.role}
                             </h1>
                         </div>
@@ -60,11 +61,11 @@ const AdminDashboard = () => {
                 {/* Bottom */}
                 <div className="">
                     <Tabs>
-                        <TabList className="flex flex-wrap -m-4 text-center justify-center">
+                        <TabList className="flex flex-wrap text-center justify-center mb-5">
                             {/* Total Products */}
                             <Tab className="p-4 md:w-1/3 sm:w-1/2 w-full cursor-pointer">
-                                <div className=" border bg-pink-50 hover:bg-pink-100 border-pink-100 px-4 py-3 rounded-xl" >
-                                    <div className="text-pink-500 w-12 h-12 mb-3 inline-block" >
+                                <div className="border bg-white hover:bg-pink-50 border-pink-100 px-4 py-6 rounded-xl shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+                                    <div className="text-pink-500 w-12 h-12 mb-3 mx-auto">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width={50}
@@ -85,17 +86,16 @@ const AdminDashboard = () => {
                                             <path d="M4.5 15.5h15" />
                                             <path d="m15 11-1 9" />
                                         </svg>
-
                                     </div>
-                                    <h2 className="title-font font-medium text-3xl text-pink-400 fonts1" >{getAllProduct.length}</h2>
-                                    <p className=" text-pink-500  font-bold" >Total Products</p>
+                                    <h2 className="title-font font-medium text-3xl text-pink-400">{getAllProduct.length}</h2>
+                                    <p className="text-pink-500 font-bold">Total Products</p>
                                 </div>
                             </Tab>
 
-                            {/* Total Order  */}
+                            {/* Total Orders */}
                             <Tab className="p-4 md:w-1/4 sm:w-1/2 w-full cursor-pointer">
-                                <div className=" border bg-pink-50 hover:bg-pink-100 border-pink-100 px-4 py-3 rounded-xl" >
-                                    <div className="text-pink-500 w-12 h-12 mb-3 inline-block" >
+                                <div className="border bg-white hover:bg-pink-50 border-pink-100 px-4 py-6 rounded-xl shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+                                    <div className="text-pink-500 w-12 h-12 mb-3 mx-auto">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width={50}
@@ -116,15 +116,15 @@ const AdminDashboard = () => {
                                             <path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1" />
                                         </svg>
                                     </div>
-                                    <h2 className="title-font font-medium text-3xl text-pink-400 fonts1" >{getAllOrder.length}</h2>
-                                    <p className=" text-pink-500  font-bold" >Total Order</p>
+                                    <h2 className="title-font font-medium text-3xl text-pink-400">{getAllOrder.length}</h2>
+                                    <p className="text-pink-500 font-bold">Total Orders</p>
                                 </div>
                             </Tab>
 
-                            {/* Total User  */}
+                            {/* Total Users */}
                             <Tab className="p-4 md:w-1/3 sm:w-1/2 w-full cursor-pointer">
-                                <div className=" border bg-pink-50 hover:bg-pink-100 border-pink-100 px-4 py-3 rounded-xl" >
-                                    <div className="text-pink-500 w-12 h-12 mb-3 inline-block" >
+                                <div className="border bg-white hover:bg-pink-50 border-pink-100 px-4 py-6 rounded-xl shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+                                    <div className="text-pink-500 w-12 h-12 mb-3 mx-auto">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width={50}
@@ -142,10 +142,9 @@ const AdminDashboard = () => {
                                             <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
                                             <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                                         </svg>
-
                                     </div>
-                                    <h2 className="title-font font-medium text-3xl text-pink-400 fonts1" >{getAllUser.length}</h2>
-                                    <p className=" text-pink-500  font-bold" >Total User</p>
+                                    <h2 className="title-font font-medium text-3xl text-pink-400">{getAllUser.length}</h2>
+                                    <p className="text-pink-500 font-bold">Total Users</p>
                                 </div>
                             </Tab>
                         </TabList>
@@ -155,11 +154,11 @@ const AdminDashboard = () => {
                         </TabPanel>
 
                         <TabPanel>
-                            <OrderDetail/>
+                            <OrderDetail />
                         </TabPanel>
 
                         <TabPanel>
-                           <UserDetail/>
+                            <UserDetail />
                         </TabPanel>
                     </Tabs>
                 </div>
